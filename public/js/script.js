@@ -3,7 +3,6 @@ $(document).ready(function () {
     var urlBox = $("#urlBox")
     var link = $("#link");
     var shrBox = $("#shortened");
-    var copyButton = $("#copy-button");
 
     function displayShortenedUrl(response) {
         console.log(response);
@@ -23,6 +22,10 @@ $(document).ready(function () {
 
     form.submit(function (event) {
         event.preventDefault();
+
+        if (!/^(?:f|ht)tps?\:\/\//.test(urlBox.val())) {
+            urlBox.val("http://" + urlBox.val());
+        }
 
         $.post('/new', {url: urlBox.val()})
             .done(displayShortenedUrl)

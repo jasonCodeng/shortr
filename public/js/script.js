@@ -1,30 +1,26 @@
-var form = document.getElementById('shorten-form');
-var urlBox = form.elements[0];
-var link = document.getElementById('link');
-var shrBox = document.getElementById('shortened');
+$(document).ready(function () {
+    var form = $("#shorten-form");
+    var urlBox = $("#urlBox")
+    var link = $("#link");
+    var shrBox = $("#shortened");
 
-function displayShortenedUrl(response) {
-    console.log(response);
-    link.textContent = response.data.shortUrl;
-    link.setAttribute(
-        'href', response.data.shortUrl
-    );
-    shrBox.style.opacity = '1';
-    urlBox.value = '';
-}
+    function displayShortenedUrl(response) {
+        console.log(response);
+        link.text(response.shortUrl);
+        link.attr("href", response.shortUrl);
+        shrBox.css('opacity', '1');
+        urlBox.val('');
+    }
 
-function alertError(error) {
-    alert('An error has occurred, please try again.');
-}
+    function alertError(error) {
+        alert('An error has occurred, please try again.');
+    }
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
+    form.submit(function (event) {
+        event.preventDefault();
 
-    console.log(urlBox.value);
-    // Send the POST request to the backend
-    axios.post('/new', {
-        url: urlBox.value
-    }).then(displayShortenedUrl)
-        .catch(alertError);
+        $.post('/new', {url: urlBox.val()})
+            .done(displayShortenedUrl)
+            .fail(alertError)
+    });
 });
-

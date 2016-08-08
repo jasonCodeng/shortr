@@ -3,8 +3,6 @@ var router = express.Router();
 var shortid = require('shortid');
 var redir = require('../models/redir');
 
-const createHash = require('../hash');
-const hashLength = 8;
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 router.get('/', function (req, res) {

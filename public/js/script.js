@@ -11,19 +11,20 @@ function displayShortenedUrl(response) {
     );
     shrBox.style.opacity = '1';
     urlBox.value = '';
-
-    function alertError(error) {
-        alert('An error has occurred, please try again.');
-    }
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        console.log(urlBox.value);
-        // Send the POST request to the backend
-        axios.post('/new', {
-            url: urlBox.value
-        }).then(displayShortenedUrl)
-            .catch(alertError);
-    });
 }
+
+function alertError(error) {
+    alert('An error has occurred, please try again.');
+}
+
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    console.log(urlBox.value);
+    // Send the POST request to the backend
+    axios.post('/new', {
+        url: urlBox.value
+    }).then(displayShortenedUrl)
+        .catch(alertError);
+});
+

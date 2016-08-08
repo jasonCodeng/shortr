@@ -92,6 +92,7 @@ main section#shortened {
     background: #FFF;
     padding: 20px;
     box-shadow: 0 7px 15px #EAEAEA;
+    font-size:3em;
 }
 
 main section#shortened em {
@@ -103,7 +104,6 @@ main section#shortened em {
 main section#shortened a#link {
     background: rgba(253, 227, 167,0.3);
     padding: 5px 10px;
-    margin-left: 5px;
     font-size: 0.8em;
     color: #555555;
 }

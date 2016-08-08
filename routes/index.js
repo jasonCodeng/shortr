@@ -3,7 +3,7 @@ var router = express.Router();
 var shortid = require('shortid');
 var redir = require('../models/redir');
 
-const baseUrl = process.env.BASE_URL;
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 router.get('/', function (req, res) {
     res.render('index');

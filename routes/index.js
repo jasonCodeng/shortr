@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var shortid = require('shortid');
 var redir = require('../models/redir');
 
 const createHash = require('../hash');
@@ -30,7 +31,7 @@ router.get('/:hash', function (req, res) {
 });
 
 router.post('/new', function (req, res) {
-    const newHash = createHash(hashLength);
+    const newHash = shortid.generate();
 
     const newRedir = new redir({
         shortUrl: baseUrl + '/' + newHash,
